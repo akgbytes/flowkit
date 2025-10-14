@@ -89,7 +89,7 @@ const SignInForm = () => {
       <Card>
         <CardHeader className="text-center">
           <CardTitle>Welcome back</CardTitle>
-          <CardDescription>Login in continue</CardDescription>
+          <CardDescription>Sign in to continue</CardDescription>
         </CardHeader>
 
         <CardContent>
@@ -142,7 +142,7 @@ const SignInForm = () => {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>Password</FormLabel>
                         <FormControl>
                           <Input
                             type="password"

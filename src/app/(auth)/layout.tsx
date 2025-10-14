@@ -8,4 +8,3 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return <AuthLayout>{children}</AuthLayout>;
 }
-3;
