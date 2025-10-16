@@ -6,7 +6,7 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: "https://aec0a2779cfc4e5c0e302aa836e75dd7@o4510200326914048.ingest.us.sentry.io/4510200409161728",
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   integrations: [
     // send console.log, console.warn, and console.error calls as logs to Sentry
