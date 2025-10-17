@@ -1,7 +1,5 @@
 "use client";
 
-import GitHubIcon from "@/components/GitHubIcon";
-import GoogleIcon from "@/components/GoogleIcon";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { signIn, signUp } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -107,7 +106,12 @@ const SignUpForm = () => {
                     disabled={isPending}
                     onClick={() => handleSocialLogin("google")}
                   >
-                    <GoogleIcon />
+                    <Image
+                      src="/google.svg"
+                      alt="google"
+                      width={16}
+                      height={16}
+                    />
                     Continue with Google
                   </Button>
                   <Button
@@ -117,7 +121,12 @@ const SignUpForm = () => {
                     disabled={isPending}
                     onClick={() => handleSocialLogin("github")}
                   >
-                    <GitHubIcon />
+                    <Image
+                      src="/github.svg"
+                      alt="github"
+                      width={16}
+                      height={16}
+                    />
                     Continue with GitHub
                   </Button>
                 </div>
