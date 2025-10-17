@@ -3,6 +3,7 @@
 import {
   CreditCardIcon,
   FolderOpenIcon,
+  Gem,
   HistoryIcon,
   KeyIcon,
   LogOut,
@@ -22,8 +23,9 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { signOut } from "@/lib/auth-client";
+import { checkout, customer, signOut } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { useHasActiveSubscription } from "@/modules/subscriptions/hooks/useSubscription";
 
 const menuItems = [
   {
@@ -51,6 +53,9 @@ const menuItems = [
 const AppSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
+
+  const { hasActiveSubscription, isLoading } = useHasActiveSubscription();
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -100,22 +105,28 @@ const AppSidebar = () => {
 
       <SidebarFooter>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              className="gap-x-4 h-10 px-4"
-              tooltip="Upgrade to Pro"
-              onClick={() => {}}
-            >
-              <StarIcon className="size-4" />
-              <span>Upgrade to Pro</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {!hasActiveSubscription && !isLoading && (
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                className="gap-x-4 h-10 px-4"
+                tooltip="Upgrade to Pro"
+                onClick={() => {
+                  checkout({ slug: "pro" });
+                }}
+              >
+                <Gem className="size-4" />
+                <span>Upgrade to Pro</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
 
           <SidebarMenuItem>
             <SidebarMenuButton
               className="gap-x-4 h-10 px-4"
               tooltip="Billing Pro"
-              onClick={() => {}}
+              onClick={() => {
+                customer.portal();
+              }}
             >
               <CreditCardIcon className="size-4" />
               <span>Billing Portal</span>
