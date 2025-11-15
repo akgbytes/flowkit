@@ -26,7 +26,7 @@ export const workflowRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const workflow = await prisma.workflow.delete({
+      return prisma.workflow.delete({
         where: {
           id: input.id,
           userId: ctx.auth.user.id,
@@ -42,7 +42,7 @@ export const workflowRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const workflow = await prisma.workflow.update({
+      return prisma.workflow.update({
         where: {
           id: input.id,
           userId: ctx.auth.user.id,
@@ -52,7 +52,6 @@ export const workflowRouter = createTRPCRouter({
         },
       });
     }),
-
   getOne: protectedProcedure
     .input(
       z.object({
