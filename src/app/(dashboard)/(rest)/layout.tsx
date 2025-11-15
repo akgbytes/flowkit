@@ -1,4 +1,4 @@
-import AppHeader from "@/components/AppHeader";
+import AppHeader from "@/components/app-header";
 import { ReactNode } from "react";
 
 interface LayoutProps {
