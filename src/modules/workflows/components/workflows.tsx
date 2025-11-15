@@ -39,9 +39,9 @@ export const WorkflowsHeader = ({ disabled }: { disabled?: boolean }) => {
       {modal}
       <EntityHeader
         title="Workflows"
-        description="Create and manage your workflow"
+        description="Create and manage your workflows"
         onNew={handleCreate}
-        newButtonLabel="New worflow"
+        newButtonLabel="New workflow"
         disabled={disabled}
         isCreating={createWorkflow.isPending}
       />
@@ -49,7 +49,7 @@ export const WorkflowsHeader = ({ disabled }: { disabled?: boolean }) => {
   );
 };
 
-export const WorflowsContainer = ({ children }: { children: ReactNode }) => {
+export const WorkflowsContainer = ({ children }: { children: ReactNode }) => {
   return (
     <EntityContainer
       header={<WorkflowsHeader />}
@@ -58,5 +58,7 @@ export const WorflowsContainer = ({ children }: { children: ReactNode }) => {
     >
       {children}
     </EntityContainer>
+  );
+};
   );
 };
