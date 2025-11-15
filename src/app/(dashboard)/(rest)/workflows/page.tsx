@@ -2,7 +2,10 @@ import ErrorFallback from "@/components/error-fallback";
 import SuspenseFallback from "@/components/suspense-fallback";
 import { requireAuth } from "@/lib/auth-utils";
 import {
-  WorflowsContainer,
+import {
+  WorkflowsContainer,
+  WorkflowsList,
+} from "@/modules/workflows/components/workflows";
   WorkflowsList,
 } from "@/modules/workflows/components/workflows";
 import { prefetchWorkflows } from "@/modules/workflows/server/prefetch";
