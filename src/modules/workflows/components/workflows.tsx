@@ -60,5 +60,3 @@ export const WorkflowsContainer = ({ children }: { children: ReactNode }) => {
     </EntityContainer>
   );
 };
-  );
-};

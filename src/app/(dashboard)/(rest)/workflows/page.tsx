@@ -2,26 +2,30 @@ import ErrorFallback from "@/components/error-fallback";
 import SuspenseFallback from "@/components/suspense-fallback";
 import { requireAuth } from "@/lib/auth-utils";
 import {
-import {
   WorkflowsContainer,
   WorkflowsList,
 } from "@/modules/workflows/components/workflows";
-  WorkflowsList,
-} from "@/modules/workflows/components/workflows";
+import { workflowsParamsLoader } from "@/modules/workflows/server/params-loader";
 import { prefetchWorkflows } from "@/modules/workflows/server/prefetch";
+
 import { HydrateClient } from "@/trpc/server";
+import { SearchParams } from "nuqs/server";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-interface PageProps {}
+interface PageProps {
+  searchParams: Promise<SearchParams>;
+}
 
-export default async function Page({}: PageProps) {
+export default async function Page({ searchParams }: PageProps) {
   await requireAuth();
 
-  prefetchWorkflows();
+  const params = await workflowsParamsLoader(searchParams);
+
+  prefetchWorkflows(params);
 
   return (
-    <WorflowsContainer>
+    <WorkflowsContainer>
       <HydrateClient>
         <ErrorBoundary fallback={<ErrorFallback />}>
           <Suspense fallback={<SuspenseFallback />}>
@@ -29,6 +33,6 @@ export default async function Page({}: PageProps) {
           </Suspense>
         </ErrorBoundary>
       </HydrateClient>
-    </WorflowsContainer>
+    </WorkflowsContainer>
   );
 }
