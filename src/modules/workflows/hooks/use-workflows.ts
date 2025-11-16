@@ -32,7 +32,7 @@ export const useCreateWorkflow = () => {
   return useMutation(
     trpc.workflows.create.mutationOptions({
       onSuccess(data) {
-        toast.success(`Workflow "${data.name} created"`);
+        toast.success(`Workflow "${data.name}" created`);
         queryClient.invalidateQueries(trpc.workflows.getMany.queryOptions({}));
       },
 
@@ -71,7 +71,7 @@ export const useUpdateWorkflowName = () => {
   return useMutation(
     trpc.workflows.updateName.mutationOptions({
       onSuccess(data) {
-        toast.success(`Workflow "${data.name} updated"`);
+        toast.success(`Workflow "${data.name}" updated`);
         queryClient.invalidateQueries(trpc.workflows.getMany.queryOptions({}));
 
         queryClient.invalidateQueries(
