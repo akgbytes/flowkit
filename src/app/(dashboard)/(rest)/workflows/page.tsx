@@ -3,7 +3,9 @@ import SuspenseFallback from "@/components/suspense-fallback";
 import { requireAuth } from "@/lib/auth-utils";
 import {
   WorkflowsContainer,
+  WorkflowsError,
   WorkflowsList,
+  WorkflowsLoading,
 } from "@/modules/workflows/components/workflows";
 import { workflowsParamsLoader } from "@/modules/workflows/server/params-loader";
 import { prefetchWorkflows } from "@/modules/workflows/server/prefetch";
@@ -27,8 +29,8 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <WorkflowsContainer>
       <HydrateClient>
-        <ErrorBoundary fallback={<ErrorFallback />}>
-          <Suspense fallback={<SuspenseFallback />}>
+        <ErrorBoundary fallback={<WorkflowsError />}>
+          <Suspense fallback={<WorkflowsLoading />}>
             <WorkflowsList />
           </Suspense>
         </ErrorBoundary>
