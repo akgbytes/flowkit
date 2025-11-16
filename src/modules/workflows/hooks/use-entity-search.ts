@@ -1,3 +1,5 @@
+"use client";
+
 import { PAGINATION } from "@/config/constants";
 import { useEffect, useState } from "react";
 
