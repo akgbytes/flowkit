@@ -90,7 +90,17 @@ export const EntityContainer = ({
   );
 };
 
-interface EntitySearhProps {
+interface EntitySearchProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+}
+
+export const EntitySearch = ({
+  value,
+  onChange,
+  placeholder = "Search",
+}: EntitySearchProps) => {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
