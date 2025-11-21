@@ -5,7 +5,7 @@ import { SettingsIcon, TrashIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button } from "./ui/button";
 
-interface WorflowNodeProps {
+interface WorkflowNodeProps {
   children: ReactNode;
   showToolbar?: boolean;
   onDelete?: () => void;
@@ -21,7 +21,7 @@ export function WorkflowNode({
   onSettings,
   name,
   description,
-}: WorflowNodeProps) {
+}: WorkflowNodeProps) {
   return (
     <>
       {showToolbar && (
